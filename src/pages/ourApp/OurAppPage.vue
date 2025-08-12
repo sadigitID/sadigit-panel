@@ -1,10 +1,10 @@
 <template>
-  <div class="min-h-screen py-6 bg-gray-50">
+  <div class="min-h-screen bg-gray-50 py-6">
     <div class="relative overflow-hidden">
       <!-- Seek/Swipe Indicator -->
       <div
         ref="carousel"
-        class="flex transition-transform duration-300 ease-in-out touch-none"
+        class="flex touch-none transition-transform duration-300 ease-in-out"
         :style="{ transform: `translateX(-${activeApp * 100}%)` }"
         @mousedown="handleMouseDown"
         @mousemove="handleMouseMove"
@@ -15,16 +15,15 @@
         @touchend="handleTouchEnd"
       >
         <!-- Dynamic Content for Each App -->
-        <div
-          v-for="(app, index) in apps"
-          :key="index"
-          class="w-full flex-shrink-0 px-4"
-        >
+        <div v-for="(app, index) in apps" :key="index" class="w-full flex-shrink-0 px-4">
           <div class="container mx-auto">
-
             <!-- Header -->
-            <div class="flex items-start gap-2 mb-6">
-              <img :src="app.pageInfo.image" :alt="app.pageInfo.imageAlt" class="w-8 h-8 object-cover mt-1" />
+            <div class="mb-6 flex items-start gap-2">
+              <img
+                :src="app.pageInfo.image"
+                :alt="app.pageInfo.imageAlt"
+                class="mt-1 h-8 w-8 object-cover"
+              />
               <div>
                 <h1 class="text-lg font-semibold text-gray-800">{{ app.pageInfo.title }}</h1>
                 <p class="text-xs text-gray-500">{{ app.pageInfo.subtitle }}</p>
@@ -36,7 +35,7 @@
               <!-- Kolom 1 -->
               <div
                 v-if="hasFirstColumnData(app)"
-                class="bg-white border border-gray-200 rounded-lg shadow p-4 space-y-4"
+                class="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow"
               >
                 <UserTotalCard
                   v-if="app.sectionTitles.totalUser"
@@ -54,9 +53,11 @@
               <!-- Kolom 2 -->
               <div
                 v-if="hasSecondColumnData(app)"
-                class="bg-white border border-gray-200 rounded-lg shadow p-4"
+                class="rounded-lg border border-gray-200 bg-white p-4 shadow"
               >
-                <h2 class="text-sm font-semibold text-center text-gray-700">{{ app.sectionTitles.userGrowth }}</h2>
+                <h2 class="text-center text-sm font-semibold text-gray-700">
+                  {{ app.sectionTitles.userGrowth }}
+                </h2>
                 <apexchart
                   v-if="app.growthSeries.length > 0 && app.growthSeries[0].data.length > 0"
                   height="350"
@@ -69,9 +70,11 @@
               <!-- Kolom 3 -->
               <div
                 v-if="hasThirdColumnData(app)"
-                class="bg-white border border-gray-200 rounded-lg shadow p-4"
+                class="rounded-lg border border-gray-200 bg-white p-4 shadow"
               >
-                <h2 class="text-sm font-semibold text-center text-gray-700">{{ app.sectionTitles.upgradeStats }}</h2>
+                <h2 class="text-center text-sm font-semibold text-gray-700">
+                  {{ app.sectionTitles.upgradeStats }}
+                </h2>
                 <apexchart
                   v-if="app.upgradeSeries.length > 0 && app.upgradeSeries[0].data.length > 0"
                   type="bar"
@@ -83,14 +86,16 @@
             </div>
 
             <!-- Bottom Tables - Dynamic grid based on available data -->
-            <div class="grid gap-4 mt-8" :class="getBottomGridClass(app)">
+            <div class="mt-8 grid gap-4" :class="getBottomGridClass(app)">
               <!-- Reminder Exp Package -->
               <div
                 v-if="hasExpiredTableData(app)"
-                class="bg-white border border-gray-200 rounded-lg shadow p-4"
+                class="rounded-lg border border-gray-200 bg-white p-4 shadow"
               >
                 <div class="mb-4">
-                  <h2 class="text-base font-semibold text-gray-800">{{ app.sectionTitles.reminderTitle }}</h2>
+                  <h2 class="text-base font-semibold text-gray-800">
+                    {{ app.sectionTitles.reminderTitle }}
+                  </h2>
                   <p class="text-xs text-gray-500">{{ app.sectionTitles.reminderDesc }}</p>
                 </div>
                 <div class="w-full overflow-x-auto">
@@ -98,9 +103,9 @@
                     <template #header>
                       <tr>
                         <th
-                          v-for="(header, index) in app.dataExpired.headers"
+                          v-for="(header, index) in app.dataExpired.head"
                           :key="index"
-                          class="px-4 py-2 text-center bg-gray-50 text-sm font-medium text-gray-700"
+                          class="bg-gray-50 px-4 py-2 text-center text-sm font-medium text-gray-700"
                         >
                           {{ header }}
                         </th>
@@ -114,7 +119,7 @@
                       <td
                         v-for="(item, itemIndex) in items"
                         :key="itemIndex"
-                        class="px-4 py-3 text-sm text-center"
+                        class="px-4 py-3 text-center text-sm"
                       >
                         <template v-if="itemIndex === 4">
                           <div class="text-center">
@@ -130,7 +135,7 @@
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
-                              class="h-5 w-5 inline"
+                              class="inline h-5 w-5"
                               fill="currentColor"
                               viewBox="0 0 24 24"
                             >
@@ -152,10 +157,12 @@
               <!-- Pengunjung Terbanyak -->
               <div
                 v-if="hasVisitorsTableData(app)"
-                class="bg-white border border-gray-200 rounded-lg shadow p-4"
+                class="rounded-lg border border-gray-200 bg-white p-4 shadow"
               >
                 <div class="mb-4">
-                  <h2 class="text-base font-semibold text-gray-800">{{ app.sectionTitles.topVisitorsTitle }}</h2>
+                  <h2 class="text-base font-semibold text-gray-800">
+                    {{ app.sectionTitles.topVisitorsTitle }}
+                  </h2>
                   <p class="text-xs text-gray-500">{{ app.sectionTitles.topVisitorsDesc }}</p>
                 </div>
                 <div class="w-full overflow-x-auto">
@@ -163,9 +170,9 @@
                     <template #header>
                       <tr>
                         <th
-                          v-for="(header, index) in app.dataPengunjungTerbanyak.headers"
+                          v-for="(header, index) in app.dataPengunjungTerbanyak.head"
                           :key="index"
-                          class="px-4 py-2 text-left bg-gray-50 text-sm font-medium text-gray-700"
+                          class="bg-gray-50 px-4 py-2 text-left text-sm font-medium text-gray-700"
                         >
                           {{ header }}
                         </th>
@@ -179,7 +186,7 @@
                       <td
                         v-for="(item, itemIndex) in items"
                         :key="itemIndex"
-                        class="px-4 py-3 text-sm text-center"
+                        class="px-4 py-3 text-center text-sm"
                       >
                         <template v-if="itemIndex === 3">
                           <AppBadge
@@ -201,30 +208,47 @@
               <!-- Log Upgrade -->
               <div
                 v-if="hasLogTableData(app)"
-                class="bg-white border border-gray-200 rounded-lg shadow p-4"
+                class="rounded-lg border border-gray-200 bg-white p-4 shadow"
               >
                 <div class="mb-4">
-                  <h2 class="text-base font-semibold text-gray-800">{{ app.sectionTitles.logTitle }}</h2>
+                  <h2 class="text-base font-semibold text-gray-800">
+                    {{ app.sectionTitles.logTitle }}
+                  </h2>
                   <p class="text-xs text-gray-500">{{ app.sectionTitles.logDesc }}</p>
                 </div>
-                <div class="space-y-3 max-h-[350px] overflow-y-auto">
+                <div class="max-h-[350px] space-y-3 overflow-y-auto">
                   <div
                     v-for="(log, logIndex) in app.upgradeLogs"
                     :key="logIndex"
-                    class="bg-white border border-gray-200 rounded-lg px-4 py-3 flex justify-between items-start"
+                    class="flex items-start justify-between rounded-lg border border-gray-200 bg-white px-4 py-3"
                   >
                     <div>
-                      <div :class="`${app.colorClass.text} font-semibold text-sm`">{{ log.name }}</div>
-                      <div class="text-xs text-gray-500 mt-1">ID: {{ log.id }}</div>
+                      <div :class="`${app.colorClass.text} text-sm font-semibold`">
+                        {{ log.name }}
+                      </div>
+                      <div class="mt-1 text-xs text-gray-500">ID: {{ log.id }}</div>
                     </div>
                     <div class="text-right">
-                      <div :class="`inline-flex items-center gap-1 ${app.colorClass.bg} px-2 py-1 rounded-md text-xs font-medium`">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      <div
+                        :class="`inline-flex items-center gap-1 ${app.colorClass.bg} rounded-md px-2 py-1 text-xs font-medium`"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-3 w-3"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
                         </svg>
                         {{ log.date }}
                       </div>
-                      <div class="text-xs mt-1">{{ log.price }} | {{ log.duration }}</div>
+                      <div class="mt-1 text-xs">{{ log.price }} | {{ log.duration }}</div>
                     </div>
                   </div>
                 </div>
@@ -236,18 +260,29 @@
     </div>
 
     <!-- Navigation Controls -->
-    <div class="flex justify-center mt-6 space-x-4">
-      <div class="container mx-auto px-4 mb-6">
-        <div class="flex justify-between items-center">
+    <div class="mt-6 flex justify-center space-x-4">
+      <div class="container mx-auto mb-6 px-4">
+        <div class="flex items-center justify-between">
           <!-- Previous Button -->
           <button
             @click="prevApp"
-            class="p-2 rounded-full bg-white shadow hover:bg-gray-100 transition-colors"
+            class="rounded-full bg-white p-2 shadow transition-colors hover:bg-gray-100"
             :disabled="activeApp === 0"
-            :class="{ 'opacity-50 cursor-not-allowed': activeApp === 0 }"
+            :class="{ 'cursor-not-allowed opacity-50': activeApp === 0 }"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-gray-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
           </button>
 
@@ -259,9 +294,7 @@
               @click="goToApp(index)"
               :class="[
                 'h-2 w-8 rounded-full transition-all duration-300',
-                activeApp === index
-                  ? 'bg-green-400'
-                  : 'bg-gray-300 hover:bg-gray-400'
+                activeApp === index ? 'bg-green-400' : 'bg-gray-300 hover:bg-gray-400'
               ]"
             ></button>
           </div>
@@ -269,12 +302,23 @@
           <!-- Next Button -->
           <button
             @click="nextApp"
-            class="p-2 rounded-full bg-white shadow hover:bg-gray-100 transition-colors"
+            class="rounded-full bg-white p-2 shadow transition-colors hover:bg-gray-100"
             :disabled="activeApp === apps.length - 1"
-            :class="{ 'opacity-50 cursor-not-allowed': activeApp === apps.length - 1 }"
+            :class="{ 'cursor-not-allowed opacity-50': activeApp === apps.length - 1 }"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-gray-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </button>
         </div>
@@ -284,14 +328,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import 'vue3-easy-data-table/dist/style.css'
 
+import { fetchOurApp } from '@/API'
 import UserTotalCard from '@/components/cards/UserTotalCard.vue'
 import UserCountries from '@/components/UserCountries.vue'
-import { BelumTersediaIcon } from '@/components/icons'
-import type { DashboardResponse, AppDashboardData } from '@/types/OurApp'
-import { fetchOurApp } from '@/API'
+import type { AppDashboardData, DashboardResponse } from '@/types/OurApp'
 
 const apps = ref<AppDashboardData[]>([])
 const loading = ref(true)
@@ -330,11 +373,15 @@ const getTopGridClass = (app: AppDashboardData) => {
     hasThirdColumnData(app)
   ].filter(Boolean).length
 
-  switch(visibleColumns) {
-    case 1: return 'grid-cols-1'
-    case 2: return 'grid-cols-1 md:grid-cols-2'
-    case 3: return 'grid-cols-1 md:grid-cols-3'
-    default: return 'grid-cols-1'
+  switch (visibleColumns) {
+    case 1:
+      return 'grid-cols-1'
+    case 2:
+      return 'grid-cols-1 md:grid-cols-2'
+    case 3:
+      return 'grid-cols-1 md:grid-cols-3'
+    default:
+      return 'grid-cols-1'
   }
 }
 
@@ -345,11 +392,15 @@ const getBottomGridClass = (app: AppDashboardData) => {
     hasLogTableData(app)
   ].filter(Boolean).length
 
-  switch(visibleTables) {
-    case 1: return 'grid-cols-1'
-    case 2: return 'grid-cols-1 lg:grid-cols-2'
-    case 3: return 'grid-cols-1 lg:grid-cols-3'
-    default: return 'grid-cols-1'
+  switch (visibleTables) {
+    case 1:
+      return 'grid-cols-1'
+    case 2:
+      return 'grid-cols-1 lg:grid-cols-2'
+    case 3:
+      return 'grid-cols-1 lg:grid-cols-3'
+    default:
+      return 'grid-cols-1'
   }
 }
 
@@ -363,43 +414,43 @@ const loadAppData = async () => {
         app.growthChartOptions = {
           ...app.growthChartOptions,
           dataLabels: {
-            enabled: true,
-            style: {
-              fontSize: '12px',
-              fontWeight: 'bold'
-            },
-            formatter: function (val: number) {
-              return val
-            }
-          },
-          plotOptions: {
-            bar: {
-              dataLabels: {
-                position: 'top'
-              }
-            }
+            enabled: true
+            // style: {
+            //   fontSize: '12px',
+            //   fontWeight: 'bold'
+            // },
+            // formatter: function (val: number) {
+            //   return val
+            // }
           }
+          // plotOptions: {
+          //   bar: {
+          //     dataLabels: {
+          //       position: 'top'
+          //     }
+          //   }
+          // }
         }
 
         app.upgradeChartOptions = {
           ...app.upgradeChartOptions,
           dataLabels: {
-            enabled: true,
-            style: {
-              fontSize: '12px',
-              fontWeight: 'bold'
-            },
-            formatter: function (val: number) {
-              return val
-            }
-          },
-          plotOptions: {
-            bar: {
-              dataLabels: {
-                position: 'top'
-              }
-            }
+            enabled: true
+            // style: {
+            //   fontSize: '12px',
+            //   fontWeight: 'bold'
+            // },
+            // formatter: function (val: number) {
+            //   return val
+            // }
           }
+          // plotOptions: {
+          //   bar: {
+          //     dataLabels: {
+          //       position: 'top'
+          //     }
+          //   }
+          // }
         }
       })
 
