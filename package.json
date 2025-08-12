@@ -18,6 +18,7 @@
     "@phosphor-icons/vue": "^2.2.1",
     "@primeuix/themes": "^1.1.2",
     "@tailwindcss/vite": "^4.1.4",
+    "@types/js-cookie": "^3.0.6",
     "apexcharts": "^4.7.0",
     "axios": "^1.9.0",
     "dayjs": "^1.11.13",
