@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-primary-50: rgb(230, 244, 238);
+  --color-primary-100: rgb(177, 222, 201);
+  --color-primary-200: rgb(140, 206, 175);
+  --color-primary-300: rgb(87, 184, 138);
+  --color-primary-400: rgb(54, 170, 115);
+  --color-primary-500: rgb(4, 149, 80);
+  --color-primary-600: rgb(4, 136, 73);
+  --color-primary-700: rgb(3, 106, 57);
+  --color-primary-800: rgb(2, 82, 44);
+  --color-primary-900: rgb(2, 63, 34);
+
+  --font-sans: 'Inter Tight', sans-serif;
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Eko Haryadi",
+    "image": "https://i.pinimg.com/736x/92/57/5b/92575b09fefd62c6ad1cb6763b017c28.jpg",
+    "description": "lorem ipsum dolor sit amet",
+    "isOnCleaningDuty": true,
+    "status": "Present"
+  },
+  {
+    "id": 2,
+    "name": "Yusup Apandi",
+    "image": "",
+    "description": "lorem ipsum dolor sit amet",
+    "isOnCleaningDuty": false,
+    "status": "Absent"
+  },
+  {
+    "id": 3,
+    "name": "Bagus Maulana",
+    "image": "",
+    "description": "lorem ipsum dolor sit amet",
+    "isOnCleaningDuty": false,
+    "status": "Absent"
+  },
+  {
+    "id": 4,
+    "name": "Test",
+    "image": "",
+    "description": "lorem ipsum dolor sit amet",
+    "isOnCleaningDuty": false,
+    "status": "Absent"
+  },
+  {
+    "id": 5,
+    "name": "Test",
+    "image": "",
+    "description": "lorem ipsum dolor sit amet",
+    "isOnCleaningDuty": false,
+    "status": "Absent"
+  },
+  {
+    "id": 6,
+    "name": "Test",
+    "image": "",
+    "description": "lorem ipsum dolor sit amet",
+    "isOnCleaningDuty": false,
+    "status": "Absent"
+  },
+  {
+    "id": 7,
+    "name": "Test",
+    "image": "",
+    "description": "lorem ipsum dolor sit amet",
+    "isOnCleaningDuty": false,
+    "status": "Absent"
+  },
+  {
+    "id": 8,
+    "name": "Test",
+    "image": "",
+    "description": "lorem ipsum dolor sit amet",
+    "isOnCleaningDuty": false,
+    "status": "Absent"
+  },
+  {
+    "id": 9,
+    "name": "Test",
+    "image": "",
+    "description": "lorem ipsum dolor sit amet",
+    "isOnCleaningDuty": false,
+    "status": "Absent"
+  },
+  {
+    "id": 10,
+    "name": "Ini data ke-10",
+    "image": "",
+    "description": "lorem ipsum dolor sit amet",
+    "isOnCleaningDuty": false,
+    "status": "Absent"
+  }
+]

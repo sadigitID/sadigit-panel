@@ -1,0 +1,66 @@
+[
+  {
+    "title": "Meeting Website Coorporate PLN",
+    "description": "Online Meeting",
+    "date": "2025-06-25",
+    "time": {
+      "start": "13:00",
+      "end": "14:00"
+    },
+    "participant": {
+      "type": "badges",
+      "list": ["FE", "BE", "UI/UX", "QA", "CS"]
+    }
+  },
+  {
+    "title": "Makan Bersama",
+    "description": "Saung Teko",
+    "date": "2025-06-25",
+    "time": {
+      "start": "12:00",
+      "end": "13:00"
+    },
+    "participant": {
+      "type": "images",
+      "list": [
+        "https://i.pinimg.com/736x/92/57/5b/92575b09fefd62c6ad1cb6763b017c28.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkuBAJG8SGHJujuNFwbMTd0jwlO_dsSK-s9A&s",
+        "https://i.pinimg.com/736x/ec/4f/a6/ec4fa6362750ec71c1acbfb8b9c29335.jpg"
+      ]
+    }
+  },
+  {
+    "title": "Makan Bersama",
+    "description": "Saung Teko",
+    "date": "2025-06-25",
+    "time": {
+      "start": "12:00",
+      "end": "13:00"
+    },
+    "participant": {
+      "type": "images",
+      "list": [
+        "https://i.pinimg.com/736x/92/57/5b/92575b09fefd62c6ad1cb6763b017c28.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkuBAJG8SGHJujuNFwbMTd0jwlO_dsSK-s9A&s",
+        "https://i.pinimg.com/736x/ec/4f/a6/ec4fa6362750ec71c1acbfb8b9c29335.jpg"
+      ]
+    }
+  },
+  {
+    "title": "Makan Bersama",
+    "description": "Saung Teko",
+    "date": "2025-06-25",
+    "time": {
+      "start": "12:00",
+      "end": "13:00"
+    },
+    "participant": {
+      "type": "images",
+      "list": [
+        "https://i.pinimg.com/736x/92/57/5b/92575b09fefd62c6ad1cb6763b017c28.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkuBAJG8SGHJujuNFwbMTd0jwlO_dsSK-s9A&s",
+        "https://i.pinimg.com/736x/ec/4f/a6/ec4fa6362750ec71c1acbfb8b9c29335.jpg"
+      ]
+    }
+  }
+]
