@@ -1,8 +1,9 @@
 {
   "name": "sadigit-panel",
-  "version": "1.0.1",
+  "version": "1.0.6",
   "private": true,
   "type": "module",
+  "homepage": "https://dashboard.sadigit.co.id",
   "scripts": {
     "dev": "vite",
     "host": "vite --host",
