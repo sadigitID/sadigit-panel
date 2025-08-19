@@ -6,7 +6,6 @@ import PenawaranKontrakPage from '@/pages/penawaranKontrak/PenawaranKontrakPage.
 import loginPage from '@/pages/login/loginPage.vue'
 import Cookies from 'js-cookie'
 
-
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 const router = createRouter({
